@@ -4,7 +4,7 @@ namespace HelloWorld
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Program.Main(string[] args)
         {
             Console.WriteLine("Hello Me Elvira!");
             string name = "";
