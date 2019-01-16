@@ -10,7 +10,7 @@ namespace textbasegame
             int fdmg1 = 0;
             int edmg1 = 0;
             //int complete = 0;
-            //Random ran = new Random();
+           
             string choice1 = null;
             string choice2 = null;
             string choice3 = null;
@@ -94,9 +94,9 @@ namespace textbasegame
 
                             else if (stick == 0)
                         {
-                            Console.WriteLine("You do not have anything to fight with");
-                            Console.WriteLine("     Fighting..      ");
-                            Console.WriteLine(" YOU MUST IT ABOVE A 5 TO KILL THE SPIDER  ");
+                            Console.WriteLine(      "You do not have anything to fight with");
+                            Console.WriteLine("     Fighting..      "                       );
+                            Console.WriteLine(" YOU MUST IT ABOVE A 5 TO KILL THE SPIDER  " );
                             Console.WriteLine("IF THE SPIDER HITS HIGHER THAN YOU, YOU WILL DIE");
 
                         }
