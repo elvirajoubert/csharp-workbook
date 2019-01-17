@@ -46,7 +46,3 @@ Console.WriteLine(restWord+"ay"+ firstLetter +"ay");
 {
     return word;}
 }
-
-    
-
-
