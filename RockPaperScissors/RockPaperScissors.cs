@@ -8,7 +8,9 @@ namespace RockPaperScissors
         {
             Console.WriteLine("Enter hand 1:");
             string hand1 = Console.ReadLine().ToLower();
+            Console.WriteLine(hand1);
             Console.WriteLine("Enter hand 2:");
+            Console.WriteLine(hand2);
             string hand2 = Console.ReadLine().ToLower();
             Console.WriteLine(CompareHands(hand1, hand2));
 
@@ -20,6 +22,10 @@ namespace RockPaperScissors
         {
             // Your code here
             return hand1 + ' ' + hand2;
+
+            if (hand1 == "rock" && "paper")
+                
+
         }
     }
 }
