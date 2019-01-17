@@ -73,8 +73,8 @@ namespace textbasegame
                                 fdmg1 = damage.Next(3, 10);
                                 edmg1 = damage.Next(1, 5);
 
-                                Console.WriteLine($"You hit a {fdmg1}");
-                                Console.WriteLine($"The spider hits a {edmg1}");
+                                Console.WriteLine($"You hit a : {fdmg1}");
+                                Console.WriteLine($"The spider hits a : {edmg1}");
 
                                 if (edmg1 > fdmg1)
                                 {
