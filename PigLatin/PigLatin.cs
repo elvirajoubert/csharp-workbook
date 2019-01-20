@@ -31,12 +31,12 @@ namespace PigLatin
             word =string.Concat(wordEnd, addYay);
             Console.WriteLine(word);
             return word;
-          //check if vowel is first character
+        //check if vowel is first character
 
-           } else if (vowel.Contains(firstChar))
-             {
-              word = string.Concat(word, addYay);
-              return word;
+        } else if (vowel.Contains(firstChar))
+            {
+            word = string.Concat(word, addYay);
+            return word;
 
             
         } else
@@ -53,8 +53,8 @@ namespace PigLatin
                         return word;
                         return word = string.Concat(word, addAy);
                     }
-                     
-      
+                    
+    
         private static string TranslatePunctuation (string punctuation)
         {
             //int punctuationIndex = punctuation.IndexOfAny(new char[] { '.', ',', '!', '?' });
@@ -68,4 +68,7 @@ namespace PigLatin
             return String.Join('.', ',', '!', '?', translatedPunctuation);
 
         }
+    }
+}
+
     
