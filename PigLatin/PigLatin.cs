@@ -1,48 +1,71 @@
 ﻿using System;
-
 namespace PigLatin
 {
     class Program
     {
-        private static string restWord;
-
-        static void Main(string[] args)
+        public static void Main()
         {
-TranslateWord("World");
+            Console.WriteLine("Welcome to PigLatin");
+            Console.WriteLine("Please enter a word");
+            string input = (Console.ReadLine().ToLower());
+            string translateWord = TranslateWord(word);
+            Console.WriteLine(translateWord);
+            Console.ReadLine();
         }
-          public static string TranslateWord(string word)
+        
+        public static string TranslateWord(string word)
         {
-            // your code goes here
-            // return word;
-        // {
-            // your code goes here
+        //declared variables:
 
-//Alphabet code
-
-// string alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-// // `.Substring` takes a starting index and the length of what 
-// // you want to include to the right
-// string firstThird = alphabet.Substring(0, 8);
-// string secondThird = alphabet.Substring(8, 8);
-// string anotherThird = alphabet.Substring(17);
-
-// System.Console.WriteLine(firstThird);
-// System.Console.WriteLine(secondThird);
-// System.Console.WriteLine(anotherThird);
-// return word;
-//         }
-//     }
-// }
+        string addYay= "yay";
+        string addAy = "ay";
+        string vowel = "aeiouy";
+        string firstChar = word[0].ToString();
+        //check if your word starts with "y"
 
 
-// "car" => "arcay"
-// string s5 = "car";
-string word Console.ReadLine(;)
-restWord = s5.Substring(3);
-firstLetter = s5.Substring(0);
+        if(firstChar == "y")
+        {
+            string y = word.Split(word[0])[1];
+            string wordEnd = word.Split(word[0])[1];
+            word =string.Concat(wordEnd, addYay);
+            Console.WriteLine(word);
+            return word;
+          //check if vowel is first character
 
-Console.WriteLine(restWord+"ay"+ firstLetter +"ay");
-{
-    return word;}
-}
+           } else if (vowel.Contains(firstChar))
+             {
+              word = string.Concat(word, addYay);
+              return word;
+
+            
+        } else
+        {
+            {
+                for (int i=0; i<word.Length; i++)
+                {
+                    if (vowel.Contains(word[i]))
+                    {
+                        string firstVowel = word[i].ToString();
+                        string firstHalf = word.Split(word[i])[1];
+                        string lastHalf = word.Split(word[i])[1];
+                        word = string.Concat(firstVowel, lastHalf,firstHalf, addAy);
+                        return word;
+                        return word = string.Concat(word, addAy);
+                    }
+                     
+      
+        private static string TranslatePunctuation (string punctuation)
+        {
+            //int punctuationIndex = punctuation.IndexOfAny(new char[] { '.', ',', '!', '?' });
+            string[] allPunctuation = punctuation.Split('.', ',', '!', '?');
+            string[] translatedPunctuation = new string[allPunctuation.Length];
+
+            for (int i= 0; i < allPunctuation.Length; i++)
+            {
+                translatedPunctuation[i] = TranslateWord(allPunctuation[i]);
+            }
+            return String.Join('.', ',', '!', '?', translatedPunctuation);
+
+        }
+    
