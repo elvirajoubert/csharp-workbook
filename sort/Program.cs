@@ -6,6 +6,7 @@ namespace sort
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("welcome to sorting Line");
             int[] x = new int[] { 14, 4, 17, 5, 8, 2, 1, 3, 9 };
             int temp = 0;
             for (int i = 0; i < x.Length; i++)
