@@ -5,9 +5,6 @@ namespace PigLatin
 {
     class Program
     {
-        //THIS DOES NOT SEEM NECESSARY - I would not use this.
-        //public static global::System.Object String { get; private set; }
-
         public static void Main()
         {
             Console.WriteLine("Welcome to PigLatin");
@@ -16,8 +13,28 @@ namespace PigLatin
             string translateWord = TranslateWord(word);
             Console.WriteLine(translateWord);
             Console.ReadLine();
+            
+            Console.WriteLine("Please enter a sentence!");
+            string sentence = (Console.ReadLine().ToLower());
+            string translateSentence = TranslateSentence(sentence);
+            Console.WriteLine(translateSentence);
+            Console.ReadLine();
+            
+            
+            Console.Write(TranslatePunctuation(translateSentence));
         }
 
+ public static string TranslateSentence (string sentence)
+        {
+            string[] words = sentence.Split(' ');
+            string[] translatedWords = new string[words.Length];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                translatedWords[i] = TranslateWord(words[i]);
+            }
+            return String.Join(' ', translatedWords);
+        }
         public static string TranslateWord(string word)
         {
             //Declaring Variables
@@ -61,13 +78,9 @@ namespace PigLatin
                 return word = string.Concat(word, addAy);
             }
         }
-    }
-}
-
-
-/*public static string TranslatePunctuation(string punctuation)
+    public static string TranslatePunctuation(string punctuation)
 {
-    //int punctuationIndex = punctuation.IndexOfAny(new char[] { '.', ',', '!', '?' });
+    var punctuationIndex = punctuation.IndexOfAny(new char[] { '.', ',', '!', '?' });
     string[] allPunctuation = punctuation.Split('.', ',', '!', '?');
     string[] translatedPunctuation = new string[allPunctuation.Length];
 
@@ -78,7 +91,8 @@ namespace PigLatin
     //for TESTING
     Console.WriteLine(translatedPunctuation);
     return String.Join(".", ",", "!", "?", translatedPunctuation);
-}*/
+}
 
+}
 
-
+}
