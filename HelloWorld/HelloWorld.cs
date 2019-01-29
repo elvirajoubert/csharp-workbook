@@ -16,10 +16,13 @@ namespace HelloWorld
             name = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
             age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Please enter the current year: ");
+
+            Console.WriteLine("Please enter the year: ");
             year = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Hello! Your name is {0} and You are {1} years old. You were born in {2}.", name, age, year - age);
+            Console.WriteLine("Hello! My name is {0} and I am {1} years old. I was born in {2}.", name, age, year - age);
+
+           
         }
     }
 }
