@@ -19,7 +19,9 @@ public class Program
 			{
 			if (candle > greatest)
 			{
+
 				greatest = candles;
+
 				count = 0;
 			}
 				if (candle == greatest)
