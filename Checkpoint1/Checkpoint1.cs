@@ -76,7 +76,7 @@ namespace Checkpoint1
 
             var factorial = 1;
             for (var i = 1; i <= number; i++)
-                factorial *= i;
+                 
 
             Console.WriteLine("{0}! = {1}", number, factorial);
         }
@@ -128,10 +128,11 @@ namespace Checkpoint1
                     max = number;
             }
 
-            Console.WriteLine("Max is " + max);
+            Console.WriteLine("Highest number is " + max);
         }
     }
 }
+
 
 
 
