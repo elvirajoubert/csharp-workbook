@@ -13,6 +13,9 @@ namespace PigLatin
             string translateWord = TranslateWord(word);
             Console.WriteLine(translateWord);
             Console.ReadLine();
+            Console.WriteLine("Press Enter to Continue");
+            Console.ReadLine();
+            // Console.WriteLine("Press 'Enter' to continue");
             
             Console.WriteLine("Please enter a sentence!");
             string sentence = (Console.ReadLine().ToLower());
@@ -77,16 +80,17 @@ namespace PigLatin
                 Console.WriteLine(word + " Translated by word has no vowels");
                 return word = string.Concat(word, addAy);
             }
-        }
+        } 
     public static string TranslatePunctuation(string punctuation)
 {
     var punctuationIndex = punctuation.IndexOfAny(new char[] { '.', ',', '!', '?' });
     string[] allPunctuation = punctuation.Split('.', ',', '!', '?');
     string[] translatedPunctuation = new string[allPunctuation.Length];
 
-    for (int i = 0; i < allPunctuation.Length; i++)
+    for (int i = 0; i < allPunctuation[i].Length; i++)
     {
         translatedPunctuation[i] = TranslateWord(allPunctuation[i]);
+        Console.WriteLine(i);
     }
     //for TESTING
     Console.WriteLine(translatedPunctuation);
