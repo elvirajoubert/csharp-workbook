@@ -149,25 +149,25 @@ class Station
         this.port[spot] = null;
     }
 
-    public string Ships
-    {
-        Console.WriteLine(String.Format("The {0}, {1} ship arrived at the port {2}.", ships[i].NameShip, ships[i].Type, i));  
+    // public string Ships
+    // {
+    //     Console.WriteLine(String.Format("The {0}, {1} ship arrived at the port {2}.", ships[i].NameShip, ships[i].Type, i));  
           
-    }
-        return "";
+    // }
+    //     return "";
       
-     }
-}
+     
+
     
-    public void roster(Ship name)
-    {
-    string rosterNames = "";
-    for (int = 0; i < namespace.passengers.Length; i++)
-    {
-    rosterNames += String.Format("Passenger {0} is on Ship {1}.\n, name,passengers[i].FullName, name.name");
-    }
-    return rosterNames;
-}
-}
+//     public void roster(Ship name)
+//     {
+//     string rosterNames = "";
+//     for (int = 0; i < namespace.passengers.Length; i++)
+//     {
+//     rosterNames += String.Format("Passenger {0} is on Ship {1}.\n, name,passengers[i].FullName, name.name");
+//     }
+//     return rosterNames;
+// }
+
 }
 }
