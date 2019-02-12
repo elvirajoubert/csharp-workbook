@@ -41,7 +41,7 @@ namespace StarWars
     }
 
 
-    //creates a person with a first & last name, their alliance
+    //this creates a person with a first & last name and their alliance
     public class Person
     {
         private string firstName;
