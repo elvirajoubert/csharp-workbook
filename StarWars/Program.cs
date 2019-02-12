@@ -21,7 +21,7 @@ namespace StarWars
             // Console.WriteLine("Hello world!");
 
 
-            //place people onto ships
+            //this places people onto ships
             falcon.EnterShip(leia, 0);
             falcon.EnterShip(hansolo, 1);
             tie.EnterShip(darth, 0);
@@ -30,18 +30,18 @@ namespace StarWars
             class1.EnterStation(falcon, 0);
             deathStar.EnterStation(tie, 0);
 
-            // class1.roster();
-            // deathStar.roster();
+            //class1.roster();
+            //deathStar.roster();
 
             //roll call for each station
-            // class1.roster(falcon);
+            //class1.roster(falcon);
             Console.WriteLine(class1.roster(falcon));
             Console.WriteLine(deathStar.roster(tie));
         }
     }
 
 
-    //creates a person with a first & last name, their alliance
+    //this creates a person with a first & last name and their alliance
     public class Person
     {
         private string firstName;
@@ -74,7 +74,7 @@ namespace StarWars
     {
         public string name;
         public Person[] passengers;
-        public Ship(string name, string alliance, string type, int size)
+        public Ship (string name, string alliance, string type, int size)
         {
             this.name = name;
             this.Type = type;
@@ -111,7 +111,7 @@ namespace StarWars
 
         public void EnterShip(Person person, int seat)
         {
-            passengers[seat] = person;
+            this.passengers[seat] = person;
         }
 
         public void ExitShip(int seat)
