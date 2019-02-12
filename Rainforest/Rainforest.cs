@@ -33,7 +33,7 @@ namespace Rainforest
             Rainforest.Warehouses.Add(Austin);
             Rainforest.Warehouses.Add(Dallas);
             Rainforest.Warehouses.Add(Houston);
-
+            
             Austin.containers.Add(Austin1);
             Austin.containers.Add(Austin2);
             Dallas.containers.Add(Dallas1);
@@ -73,7 +73,9 @@ namespace Rainforest
         }
         public static void Index (Item item, Company company)
         {
-            Dictionary<Item, Container> indexer = new Dictionary<Item, Container>();
+            Dictionary<Item, Container> item2cont = new Dictionary<Item, Container>();
+            Dictionary<Item, Warehouse> item2war = new Dictionary<Item, Warehouse>();
+            
             foreach (Warehouse war in company.Warehouses)
             {
                 foreach (Container cont in war.containers)
@@ -81,15 +83,17 @@ namespace Rainforest
                     foreach (Item it in cont.items)
 
                     {
-                        indexer.Add(it, cont);
+                        item2cont.Add(it, cont);
+                        item2war.Add(it, war);
                     }
                 }
             }
 
-                if (indexer.ContainsKey(item))
+                if (item2cont.ContainsKey(item))
                 {
-                    Container value = indexer[item];
-                    Console.WriteLine("{0} is found in {1}", item.name, value.id);
+                    Container value1 = item2cont[item];
+                    Warehouse value2 = item2war[item];
+                    Console.WriteLine("{0} is found in {1} {2}", item.name, value1.id, value2.location);
                 }
             }
         }
