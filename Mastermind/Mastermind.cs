@@ -38,9 +38,9 @@ namespace Mastermind
     class Game
     {
         public List<Row> rows = new List<Row>();
-        //creates a private list of the Row class
+        //this creates a private list of the Row class
         public string[] answer = new string[4];
-        //creates a new array of strings with the size of 4 to hold our answer
+        // this creates a new array of strings with the size of 4 to hold our answer
         public int guesses = 0;
 
         public Game(string[] answer, int guesses)
@@ -91,7 +91,7 @@ namespace Mastermind
                 {
                     balls[i] = new Ball(letters[i].ToString());
                     //each of the 4 balls created in the array are assigned to a string of one letter
-                    //the letters come from string the user typed in and entered to the string letters
+                    //these letters come from string that user typed in and entered to the string letters
                 }
                 Row row = new Row(balls);
                 //this makes a new Row called row where we pass in the users' balls, all now in their own separate strings
