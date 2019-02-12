@@ -84,10 +84,10 @@ namespace Mastermind
                 Console.WriteLine("You have {0} tries left!", turns);
                 Console.WriteLine("Choose four letters: ");
                 string letters = Console.ReadLine();
-                //reads the chosen letters as a string letters
+                //this reads the chosen letters as a string letters
                 Ball[] balls = new Ball[4];
                 for (int i = 0; i < 4; i++)
-                //checks each one of the balls
+                //this checks each one of the balls
                 {
                     balls[i] = new Ball(letters[i].ToString());
                     //each of the 4 balls created in the array are assigned to a string of one letter
@@ -98,7 +98,7 @@ namespace Mastermind
                 game.rows.Add(row);
                 //this adds the row of the new balls we created to the list of rows in the game
 
-                //checks if the correct answer has been guessed every turn
+                //this checks if the correct answer has been guessed every turn
                 if (game.Score(row) == "4 - 0")
                 {
                     Console.WriteLine("You win!");
@@ -107,7 +107,7 @@ namespace Mastermind
                 }
                 else
                     Console.WriteLine(game.Score(row));
-                //shows the score (red and white) for that particular turn
+                //this shows the score (red and white) for that particular turn
             }
             if (won == false)
                 Console.WriteLine("Out of turns!");
