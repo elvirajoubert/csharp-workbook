@@ -6,37 +6,68 @@ namespace whiteboardingchallenge
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine();
-            StringTransform result;
-            string reversed;
-            result = new StringTransform();
-            reversed = result.Transform("hell");
-            System.Console.WriteLine(reversed);
+            StringTransform transformer = new StringTransform();
+            UpperCaseTransform transformer1 = new UpperCaseTransform();
+            LowerCaseTransform transformer2 = new LowerCaseTransform();
+            StringTransform[] allTransforms = new StringTransform[]
+
+   {   
+                transformer,
+                transformer1,
+                transformer2,
+   };
+            foreach (var item in allTransforms)
+            {
+                var result = item.Transform("cat");
+                
+                System.Console.WriteLine(result);
+            }
+
 
         }
-    }
-
-    class StringTransform
-    {
-
-        public string Transform(string v)
+        public class StringTransform
         {
-            if (v == null)
+            public virtual string Transform(string v)
             {
-                throw new ArgumentNullException("v");
+                if (v == null)
+                {
+                    throw new ArgumentNullException("v");
+                }
+
+                string result = String.Empty;
+                int i;
+
+                for (i = v.Length - 1; i >= 0; i--)
+                {
+                    result += v[i];
+                }
+                return result;
+
             }
-
-            string result = String.Empty;
-            int i;
-
-            for (i = v.Length-1; i >= 0; i--)
+        }
+        public class UpperCaseTransform : StringTransform
+        {
+            public override string Transform(string input)
             {
-                result += v[i];
+                return input.ToUpper();
             }
-            return result;
+        }
 
+        public class LowerCaseTransform : StringTransform
+        {
+            public override string Transform(string input)
+            {
+                return input.ToLower();
+                
+            }
         }
     }
-
 }
+
+
+
+
+
+
+
 
