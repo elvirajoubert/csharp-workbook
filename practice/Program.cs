@@ -6,31 +6,38 @@ namespace practice
     {
         static void Main(string[] args)
         {
+            Motorcycle harley = new harley("Harley", "FatBoy", true);
+            Car civic = new Car("Honda", "Civic", 2, false);
+            Vehicle myVehicle = new Car("mazda", "3", 4, false);
+
+            List<Vehicle> invemtory = new List<Vehicle>();
+            inventory.Add(harley);
+            inventory.Add(civic);
+
+            foreach(Vehicle v in inventory)
+            {
+                Console.WriteLine()
+            }
 
         }
     }
 
-    public class Vehicle
+    public abstract class Vehicle
     {
         public Vehicle(String make, String model, int numWheel)
         {
-            this.Make = make;
-            this.Model = model;
-            this.NumWheel = numWheel;
-            this.Capacity = capacity;
+            String MAke;
+            String Model;
+            int NumWheels;
+            public Vehicle(String name, String model, int numWheels
+            {
+                this.Make = make;
+                this.Model = model;
+                this.NumWheels = numWheels;
+
+            }
         }
-        public String Make { get; }
-        public String Model { get; }
-        public int NumWheel { get; }
-        public Vehicle (String make, String model, int numWheels)
-        {
 
-            this.Make = make;
-            this.Model = model;
-            this.NumWheels = numWheels;
-
-
-        }
     }
     public class Motorcycle : Vehicle
     {
@@ -44,12 +51,12 @@ namespace practice
     public class Car : Vehicle
     {
         bool IsConvertable;
-        public Car(String make, String model, int numWheels, bool IsSedan) : base(make, model, numWheels) 
+        public Car(String make, String model, int numWheels, bool IsSedan) : base(make, model, numWheels)
 
         {
             this.IsConvertable = IsConvertable;
         }
-}
+    }
 }
 
 
