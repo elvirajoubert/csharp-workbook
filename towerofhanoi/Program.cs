@@ -13,24 +13,27 @@ namespace towerofhanoi
             towerofHanoiGame.Play();
         }
     }
+
     class Blocks
     {
         public int weightedBlock { get; set; }
-        public Blocks (int weightedBlock)
+        public Blocks(int weightedBlock)
         {
             this.weightedBlock = weightedBlock;
         }
     }
- class Towers {
+    class Towers
+    {
         public Stack<Blocks> towerBlocks { get; set; }
-        public Towers () {
-            this.towerBlocks = new Stack<Blocks> ();
+        public Towers()
+        {
+            this.towerBlocks = new Stack<Blocks>();
         }
     }
     class Game
     {
         //declaring variables and definitions
-       Dictionary<String, Towers> MakeTowers = new Dictionary<String, Towers>();
+        Dictionary<String, Towers> MakeTowers = new Dictionary<String, Towers>();
         bool win = false;
         string userChoice1 = "";
         bool validMoveFrom = false;
@@ -156,7 +159,7 @@ namespace towerofhanoi
             if ((MakeTowers["C"].towerBlocks.Count >= 4) || (MakeTowers["D"].towerBlocks.Count >= 4))
             {
                 Console.WriteLine("You Win!");
-                
+
                 win = true;
             }
             else
@@ -170,7 +173,7 @@ namespace towerofhanoi
             while (!win)
             {
             //print board if person does not make valid choices try again
-            TryAgain : PrintBoard();
+            TryAgain: PrintBoard();
                 //User Move From Tower ___
                 UserMoveFrom();
                 //While not a valid move - keep asking for a move.
@@ -187,6 +190,7 @@ namespace towerofhanoi
                         goto TryAgain;
                     }
                 }
+
                 //User Move block to tower ___
                 UserMoveTo();
                 //while not a valid move - keep asking where to move
