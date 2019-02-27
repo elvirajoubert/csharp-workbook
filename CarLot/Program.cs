@@ -64,7 +64,7 @@ namespace CarLot
         public abstract void PrintDescription();
     }
 
-public class Car : Vehicle
+    public class Car : Vehicle
     //listing properties 
     {
         string Type { get; set; }
@@ -72,7 +72,9 @@ public class Car : Vehicle
         public override string LicenseNumber { get; set; }
         public override string Make { get; set; }
         public override string Model { get; set; }
-        public override double Price { get: set; }
+        public override double Price
+        {
+            get: set; }
         public Car(string type, int NumDoors, string LicenseNumber, string make, string model, double price)
 
         {
@@ -92,7 +94,7 @@ public class Car : Vehicle
     public class Truck : Vehicle
     //listing properties for truck
     {
-        int BedSize{ get; set; }
+        int BedSize { get; set; }
         public override string LicenseNumber { get; set; }
         public override string Make { get; set; }
         public override string Model { get; set; }
