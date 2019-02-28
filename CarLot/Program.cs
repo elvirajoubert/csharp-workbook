@@ -62,8 +62,11 @@ namespace CarLot
         public abstract double Price { get; set; }
         public abstract void PrintDescription();
     }
+
+
+    // overiding from the base object class
     public class Car : Vehicle
-    //listing properties 
+    //listing properties of a car
     {
         string Type { get; set; }
         int NumDoors { get; set; }
