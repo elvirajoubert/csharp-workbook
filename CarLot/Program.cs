@@ -11,21 +11,20 @@ namespace CarLot
             CarLot tommyCarLot = new CarLot("Tommy's Carlot");
             Car car1 = new Car("Sedan", 4, "CO2=001", "Lexus", "ES350", 450000);
             Car car2 = new Car("Coupe", 2, "AJ9B123", "Ferrari", "612 Scaglietti", 343809);
-            Car car3 = new Car("Hatchback", 4, "RedSox", "Mazda", "Mazda3", 28000);
             Truck truck1 = new Truck("AJ3V220", "Toyota", "Tundra", 60000, 7);
             Truck truck2 = new Truck("DJ955TF", "Chevrolet", "Colorado", 650000, 9);
 
-            dannyCarLot.AddVehicle(car3);
+            dannyCarLot.AddVehicle(car1);
             dannyCarLot.AddVehicle(truck1);
             tommyCarLot.AddVehicle(car2);
             tommyCarLot.AddVehicle(truck2);
-            dannyCarLot.printInventory();
-            tommyCarLot.printInventory();
+            dannyCarLot.PrintInventory();
+            tommyCarLot.PrintInventory();
 
         }
     }
 
-    //Listing Vehicles and names
+    //Listing Names and Vehicles
 
     public class CarLot
     {
@@ -42,9 +41,9 @@ namespace CarLot
             Vehicles.Add(vehicle);
 
         }
-        public void printInventory()
+        public void PrintInventory()
         {
-            Console.WriteLine($"The Carlot has {Vehicles.Count} vehicles");
+            Console.WriteLine($"This Carlot has {Vehicles.Count} vehicles");
             //looping through all cars
             foreach (var vehicle in Vehicles)
             {
@@ -63,7 +62,6 @@ namespace CarLot
         public abstract double Price { get; set; }
         public abstract void PrintDescription();
     }
-
     public class Car : Vehicle
     //listing properties 
     {
@@ -72,9 +70,7 @@ namespace CarLot
         public override string LicenseNumber { get; set; }
         public override string Make { get; set; }
         public override string Model { get; set; }
-        public override double Price
-        {
-            get: set; }
+        public override double Price { get; set; }
         public Car(string type, int NumDoors, string LicenseNumber, string make, string model, double price)
 
         {
@@ -109,10 +105,13 @@ namespace CarLot
         }
         public override void PrintDescription()
         {
-            Console.WriteLine("Thos truck is a {0} {1} with license plate {2} that has a bed size of {3}. Current value is {4}", Make, Model, LicenseNumber, BedSize, Price);
+            Console.WriteLine("This truck is a {0} {1} with license plate {2} that has a bed size of {3}. Current value is {4}", Make, Model, LicenseNumber, BedSize, Price);
         }
     }
+
 }
+
+
 
 
 
