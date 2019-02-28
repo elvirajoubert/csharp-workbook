@@ -1,120 +1,133 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CarLot
+namespace CarLot 
 {
-    class Program
+    class Program 
     {
-        static void Main(string[] args)
-        {
-            CarLot dannyCarLot = new CarLot("Danny's Carlot");
-            CarLot tommyCarLot = new CarLot("Tommy's Carlot");
-            Car car1 = new Car("Sedan", 4, "CO2=001", "Lexus", "ES350", 450000);
-            Car car2 = new Car("Coupe", 2, "AJ9B123", "Ferrari", "612 Scaglietti", 343809);
-            Truck truck1 = new Truck("AJ3V220", "Toyota", "Tundra", 60000, 7);
-            Truck truck2 = new Truck("DJ955TF", "Chevrolet", "Colorado", 650000, 9);
+        static void Main (string[] args) {
+            CarLot Scottelder = new CarLot ("Scott Elder's Carlot");
+            CarLot Covert = new CarLot ("Covert's Carlot");
 
-            dannyCarLot.AddVehicle(car1);
-            dannyCarLot.AddVehicle(truck1);
-            tommyCarLot.AddVehicle(car2);
-            tommyCarLot.AddVehicle(truck2);
-            dannyCarLot.PrintInventory();
-            tommyCarLot.PrintInventory();
+            Car car1 = new Car ("MyChoice", "CO2P001", "Lexus", "ES350", "Sedan", 4, 450000);
+            Car car2 = new Car ( "PowerCar", "AJ9B123", "Ferrari", "612 Scaglietti", "Coupe",2, 2343809);
+            Truck truck1 = new Truck ("HeavyDuty", "AJ3V220", "Toyota", "Tundra", 7, 60000);
+            Truck truck2 = new Truck ("Raptor", "DJ955TF", "Chevrolet", "Colorado", 9, 650000);
+
+            Scottelder.addVehicle(car1);
+            Covert.addVehicle(truck1);
+            Covert.addVehicle(car2);
+            Scottelder.addVehicle(truck2);
+            Covert.lotInventory();
+            Scottelder.lotInventory();
+
+            Console.WriteLine ("{0} has these vehicles.", Scottelder.name);
+            Scottelder.lotInventory();
+            Console.WriteLine ("");
+
+            Console.WriteLine ("{0} has these vehicles.", Covert.name);
+            Covert.lotInventory();
+            Console.WriteLine ("");
 
         }
     }
 
     //Listing Names and Vehicles
+    class CarLot {
+        public string name = "";
+        List<Vehicle> numofCars = new List<Vehicle> ();
 
-    public class CarLot
-    {
-        string Name { get; set; }
-        List<Vehicle> Vehicles = new List<Vehicle>();
-
-        public CarLot(string name)
-        {
-            this.Name = name;
+        public CarLot (string myName) {
+            this.name = myName;
         }
-
-        public void AddVehicle(Vehicle vehicle)
-        {
-            Vehicles.Add(vehicle);
+        //this adds vehicle type to carlot class list
+        public void addVehicle (Vehicle myVehicle) {
+            numofCars.Add (myVehicle);
 
         }
-        public void PrintInventory()
+        public void lotInventory () 
         {
-            Console.WriteLine($"This Carlot has {Vehicles.Count} vehicles");
+            Console.WriteLine ("There are {0} on the CarLot.", numofCars.Count);
+            
             //looping through all cars
-            foreach (var vehicle in Vehicles)
-            {
-                vehicle.PrintDescription();
+            foreach (Vehicle item in numofCars) {
+                item.printDescription ();
+                Console.WriteLine ("");
             }
         }
 
     }
 
     //abstract vehicle class, cannot be instantiated
-    public abstract class Vehicle
-    {
-        public abstract string LicenseNumber { get; set; }
-        public abstract string Make { get; set; }
-        public abstract string Model { get; set; }
-        public abstract double Price { get; set; }
-        public abstract void PrintDescription();
+    public abstract class Vehicle {
+        public string licenseNumber;
+        public string vehicleMake;
+        public string vehicleModel;
+        public double vehiclePrice;
+        public string vehicleDescription;
+
+        //this method printsdetails about all vehicles
+        virtual public void printDescription () {
+            Console.WriteLine ("Vehicle Description: {0}", this.vehicleDescription);
+            Console.WriteLine ("License number : {0}", this.licenseNumber);
+            Console.WriteLine ("Make : {0}", this.vehicleMake);
+            Console.WriteLine ("Model : {0}", this.vehicleModel);
+            Console.WriteLine ("The price of of the vehicle is ${0}", this.vehiclePrice);
+        }
+
     }
 
-
-    // overiding from the base object class
-    public class Car : Vehicle
+    // overriding from the base object class
+    class Car : Vehicle
     //listing properties of a car
     {
-        string Type { get; set; }
-        int NumDoors { get; set; }
-        public override string LicenseNumber { get; set; }
-        public override string Make { get; set; }
-        public override string Model { get; set; }
-        public override double Price { get; set; }
-        public Car(string type, int NumDoors, string LicenseNumber, string make, string model, double price)
+        
+        int numberofDoors = 2;
+        string vehicleType = "";
+
+          //constructor for car
+        public Car (string description, string license, string make, string model, string Type, int numberofDoors, double Price)
 
         {
-            this.Type = type;
-            this.NumDoors = NumDoors;
-            this.LicenseNumber = LicenseNumber;
-            this.Make = make;
-            this.Model = model;
-            this.Price = price;
+            this.licenseNumber = license;
+            this.vehicleMake = make;
+            this.vehicleModel = model;
+            this.vehiclePrice = Price;
+            this.vehicleType = description;
         }
-        public override void PrintDescription()
-        {
-            Console.WriteLine("This car is a {0} {1} with a license plate {2}.It is a {3} with {4} doors. Current value is {5}", Make, Model, LicenseNumber, NumDoors, Price);
+        public override void printDescription () {
+            
+
+            Console.WriteLine ("Vehicle Description: {0}", this.vehicleDescription);
+            Console.WriteLine ("The license number is {0}.", this.licenseNumber);
+            Console.WriteLine ("Make is a {0}.", this.vehicleMake);
+            Console.WriteLine ("Model is : {0}.", this.vehicleModel);
+            Console.WriteLine ("This is a {0} door {1}.", this.numberofDoors, this.vehicleType);
+            Console.WriteLine ("The price of the vehicle is ${0}.", this.vehiclePrice);
+
         }
 
     }
-    public class Truck : Vehicle
+    class Truck : Vehicle
     //listing properties for truck
     {
-        int BedSize { get; set; }
-        public override string LicenseNumber { get; set; }
-        public override string Make { get; set; }
-        public override string Model { get; set; }
-        public override double Price { get; set; }
-        public Truck(string LicenseNumber, string make, string model, double price, int bedSize)
-        {
-            this.LicenseNumber = LicenseNumber;
-            this.Make = make;
-            this.Model = model;
-            this.Price = price;
+        int BedSize = 7;
+
+        public Truck (string description, string license, string make, string model, int bedSize, double price) {
+            this.vehicleDescription = description;
+            this.licenseNumber = license;
+            this.vehicleMake = make;
+            this.vehicleModel = model;
+            this.vehiclePrice = price;
             this.BedSize = bedSize;
         }
-        public override void PrintDescription()
-        {
-            Console.WriteLine("This truck is a {0} {1} with license plate {2} that has a bed size of {3}. Current value is {4}", Make, Model, LicenseNumber, BedSize, Price);
+        override public void printDescription () {
+            Console.WriteLine ("Vehicle Description: {0}", this.vehicleDescription);
+            Console.WriteLine ("License number : {0}.", this.licenseNumber);
+            Console.WriteLine ("Make : {0}", this.vehicleMake);
+            Console.WriteLine ("Model :{0}", this.vehicleModel);
+            Console.WriteLine ("This truck has a {0} ft bed", this.BedSize);
+            Console.WriteLine ("The price of the vehicle is ${0}", this.vehiclePrice);
         }
     }
-
 }
-
-
-
-
-
