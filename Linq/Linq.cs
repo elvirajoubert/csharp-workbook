@@ -15,7 +15,7 @@ namespace Linq
             students.Add(new Student("Kevin", "512-222-2222", "435 Carolyn", -2500));
             students.Add(new Student("Victoria", "512-827-8498", "701 Brazos St", 0));
             students.Add(new Student("Luke", "555-555-5555", "451 Brody Ln", -500));
-           
+    
 
             IEnumerable<Student> negativeBalance = from currentStudent in students
             where currentStudent.Balance < 0
