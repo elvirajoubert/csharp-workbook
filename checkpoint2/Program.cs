@@ -5,7 +5,7 @@ namespace checkpoint2 {
         static void Main (string[] args) {
             Board board = new Board ();
             board.GenerateCheckers ();
-            board.DrawBoard;
+            board.DrawBoard ();
 
             Console.WriteLine ("Would you like to 'move' or 'remove' a piece?");
             string read = Console.ReadLine ();
@@ -17,6 +17,7 @@ namespace checkpoint2 {
                         int row = Convert.ToInt32 (Console.ReadLine ());
                         Console.WriteLine ("Please select checker column:");
                         int col = Convert.ToInt32 (Console.ReadLine ());
+
                         if (board.SelectChecker (row, col) != null) {
                             Checker checker = board.SelectChecker (row, col);
                             Console.WriteLine ("Please move to a new row:");
@@ -24,7 +25,7 @@ namespace checkpoint2 {
                             Console.WriteLine ("Please move to a new column:");
                             int newCol = Convert.ToInt32 (Console.ReadLine ());
                             checker.Position = new int[] { newRow, newCol };
-                            board.DrawDoard ();
+                            board.DrawBoard ();
                         } else {
                             Console.WriteLine ("This is an invalid move");
                             Console.WriteLine ("Please select checker row:");
@@ -51,37 +52,33 @@ namespace checkpoint2 {
 
             } while (board.CheckForWin () != true);
         }
-    }
 
-    public class Checker {
-        public string Symbol { get; set; }
-        public int[] Position { get; set; }
-        public string Color { get; set; }
+        public class Checker {
+            public string Symbol { get; set; }
+            public int[] Position { get; set; }
+            public string Color { get; set; }
 
-        public Checker (string color, int[] position) {
-            int circleId;
-            if (color == "white") {
-                circleId = int.Parse ("25A0", System.Globalization.NumberStyles.HexNumber);
-            } else {
-                circleId = int.Parse ("25AB2", System.Globalization.NumberStyles.HexNumber);
-                Color = "black";
+            public Checker (string color, int[] position) {
+                int circleId;
+                if (color == "white") {
+                    circleId = int.Parse ("25A0", System.Globalization.NumberStyles.HexNumber);
+                } else {
+                    circleId = int.Parse ("25AB2", System.Globalization.NumberStyles.HexNumber);
+                    Color = "black";
+                }
+                this.Symbol = char.ConvertFromUtf32 (circleId);
+                this.Position = position;
             }
-            this.Symbol = char.ConvertFromUtf32 (circleId);
-            this.Position = position;
-        }
-    }
-    public class Board 
-    {
-        public string[][] Grid { get; set; }
-        public List<Checker> Checkers { get; set; }
-        public Board () 
-        {
-            this.Checkers = new List<Checker> ();
-            this.CreateBoard ();
-
-            return;
         }
 
+        public class Board {
+            public string[][] Grid { get; set; }
+            public List<Checker> Checkers { get; set; }
+            public Board () {
+                this.Checkers = new List<Checker> ();
+                return;
+            }
+        
         public void CreateBoard () {
             this.Grid = new string[][] {
                 new string[] { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -142,4 +139,6 @@ namespace checkpoint2 {
             return Checkers.All (x => x.Color == "White") || !Checkers.Exists (x => x.Color == "white");
         }
     }
+
+}
 }
