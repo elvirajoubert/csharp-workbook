@@ -52,33 +52,40 @@ namespace checkpoint2 {
 
             } while (board.CheckForWin () != true);
         }
+    }
+    public class Checker {
+        public string Symbol { get; set; }
+        public int[] Position { get; set; }
+        public string Color { get; set; }
 
-        public class Checker {
-            public string Symbol { get; set; }
-            public int[] Position { get; set; }
-            public string Color { get; set; }
-
-            public Checker (string color, int[] position) {
-                int circleId;
-                if (color == "white") {
-                    circleId = int.Parse ("25A0", System.Globalization.NumberStyles.HexNumber);
-                } else {
-                    circleId = int.Parse ("25AB2", System.Globalization.NumberStyles.HexNumber);
-                    Color = "black";
-                }
-                this.Symbol = char.ConvertFromUtf32 (circleId);
-                this.Position = position;
+        public Checker (string color, int[] position) {
+            int circleId;
+            if (color == "white") {
+                circleId = int.Parse ("25A0", System.Globalization.NumberStyles.HexNumber);
+            } else {
+                circleId = int.Parse ("25AB2", System.Globalization.NumberStyles.HexNumber);
+                Color = "black";
             }
+            this.Symbol = char.ConvertFromUtf32 (circleId);
+            this.Position = position;
+        }
+    }
+
+    public class Board {
+        public Checker check;
+        //the grid is the array used to draw the board
+        public string[][] Grid { get; set; }
+        //list of checker pieces used to position checkers on the board
+        public List<Checker> Checkers { get; set; }
+        public Board () 
+        {
+            //instantiating the board with a list of checkers to create the board
+            this.Checkers = new List<Checker>();
+            this.CreateBoard ();
+
+            return;
         }
 
-        public class Board {
-            public string[][] Grid { get; set; }
-            public List<Checker> Checkers { get; set; }
-            public Board () {
-                this.Checkers = new List<Checker> ();
-                return;
-            }
-        
         public void CreateBoard () {
             this.Grid = new string[][] {
                 new string[] { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -140,5 +147,4 @@ namespace checkpoint2 {
         }
     }
 
-}
 }
