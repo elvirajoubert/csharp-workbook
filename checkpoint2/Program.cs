@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace checkpoint2 {
     class Program {
@@ -121,7 +124,7 @@ namespace checkpoint2 {
         }
 
         public void PlaceCheckers () {
-            foreach (var checker in Checkers.Count) {
+            foreach (var checker in Checkers) {
                 this.Grid[checker.Position[0]][checker.Position[1]] = checker.Symbol;
             }
             return;
