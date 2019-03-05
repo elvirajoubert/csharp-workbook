@@ -66,7 +66,7 @@ namespace checkpoint2 {
             if (color == "white") {
                 circleId = int.Parse ("25A0", System.Globalization.NumberStyles.HexNumber);
             } else {
-                circleId = int.Parse ("25AB2", System.Globalization.NumberStyles.HexNumber);
+                circleId = int.Parse ("25B2", System.Globalization.NumberStyles.HexNumber);
                 Color = "black";
             }
             this.Symbol = char.ConvertFromUtf32 (circleId);
