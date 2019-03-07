@@ -11,7 +11,15 @@ namespace Files
     class Program {
         static void Main (string[] args) {
 
-            Console.WriteLine ("Hello World");
+            string filesPath = ".\\wordguess.txt";
+            Files f = new Files ();
+            string filePath = f.createFile ("example1");
+            f.editFile (filesPath);
+            string filesPath2 = f.createFile ("example2");
+            f.removeFile (filesPath2);
+            f.longestWord (filesPath);
+
+
         }
         class Files {
             private string spec1 = "This is a text file.";
@@ -44,7 +52,7 @@ namespace Files
                 }
                 Console.WriteLine ("The file at {0} has been edited", path);
                 return path;
-                
+
             }
 
             public void numberOfWords (string filePath) {
