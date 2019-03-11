@@ -4,7 +4,11 @@ using System.IO;
 namespace GuessGame {
     class Program {
         static void Main (string[] args) {
+<<<<<<< Updated upstream
             string[] lines = File.ReadAllLines (@"C:\Users\Elvira KGB\Documents\wordguess.txt.txt");
+=======
+            string[] lines = File.ReadAllLines (@"C:\Users\Elvira KGB\Documents\wordguess.txt");
+>>>>>>> Stashed changes
 
             Random rnd = new Random ();
             int r = rnd.Next (lines.Length);
