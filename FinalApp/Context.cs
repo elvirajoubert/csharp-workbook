@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using static FinalApp.Program;
 
 namespace FinalApp
 {
     public class Context : DbContext
     {
-        internal IEnumerable<Todo> myList;
-        private DbSet<Todo> _myList;
-
-        public DbSet<Todo> MyList { get => _myList; set => _myList = value; }
+        public DbSet<Todo> MyList { get; set; }
+        public IEnumerable<Todo> myList { get; internal set; }
 
         protected
         override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

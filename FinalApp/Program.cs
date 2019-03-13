@@ -170,7 +170,7 @@ namespace FinalApp
             {
                 List<Todo> completedList = new List<Todo>();
 
-                foreach (Todo item in context.MyList)
+                foreach (Todo item in context.myList)
                 {
                     if (item.Status == true)
                     {
@@ -188,7 +188,7 @@ namespace FinalApp
 
             public void save()
             {
-                Context.SaveChanges();
+                context.SaveChanges();
             }
         }
     }
