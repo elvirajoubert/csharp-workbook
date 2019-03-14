@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
 
@@ -8,8 +9,19 @@ namespace FinalApp
     {
         private static void Main(string[] args)
         {
+            DbContextOptionsBuilder<FinalAppDBContext> builder = new DbContextOptionsBuilder<FinalAppDBContext>();
+            builder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ToDoDb;Trusted_Connection=True;");
+            DbContextOptions<FinalAppDBContext> opts = builder.Options;
+            FinalAppDBContext context = new FinalAppDBContext(opts);
+
+
+
+
+
+
+
             //TDA - ToDoApp
-            TDA theTda = new TDA();
+            TDA theTda = new TDA(context);
             List<Todo> theList = theTda.list();
             string userInput = "";
             string id;
@@ -73,7 +85,7 @@ namespace FinalApp
 
                     if (yesNo == "yes" || yesNo == "y")
                     {
-                        Console.WriteLine("Please enter id of the task you wish to masrk as complete...");
+                        Console.WriteLine("Please enter id of the task you wish to mark as complete...");
                         id = Console.ReadLine();
                         Todo markAsDone = theTda.GetTodo(id);
                         markAsDone.Status = true;
@@ -127,18 +139,19 @@ namespace FinalApp
 
         public class TDA
         {
-            public Context context;
+            public FinalAppDBContext context;
 
-            public TDA()
+            public TDA(FinalAppDBContext context)
             {
-                context = new Context();
+                this.context = context;
                 context.Database.EnsureCreated();
             }
 
             public List<Todo> list()
             {
                 List<Todo> allItems = new List<Todo>();
-                foreach (Todo item in context.myList)
+
+                foreach (Todo item in context.Todos)
                 {
                     allItems.Add(item);
                 }
@@ -149,14 +162,14 @@ namespace FinalApp
 
             public void add(string task)
             {
-                context.MyList.Add(new Todo(task));
+                context.Todos.Add(new Todo(task));
             }
 
             //searching an item by id
 
             public Todo GetTodo(string findId)
             {
-                foreach (Todo item in context.myList)
+                foreach (Todo item in context.Todos)
                 {
                     if (item.Id.ToString() == findId)
                     {
@@ -170,20 +183,21 @@ namespace FinalApp
             {
                 List<Todo> completedList = new List<Todo>();
 
-                foreach (Todo item in context.myList)
+                foreach (Todo item in context.Todos)
                 {
                     if (item.Status == true)
                     {
                         completedList.Add(item);
-                        return completedList;
+
                     }
                 }
-                return null;
+                return completedList;
+
             }
 
             public void remove(Todo removeItem)
             {
-                context.myListRemove(removeItem);
+                context.Todos.Remove(removeItem);
             }
 
             public void save()

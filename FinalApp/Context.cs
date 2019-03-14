@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 using static FinalApp.Program;
 
 namespace FinalApp
 {
-    public class Context : DbContext
+    public class FinalAppDBContext : DbContext
     {
-        public DbSet<Todo> MyList { get; set; }
-        public IEnumerable<Todo> myList { get; internal set; }
 
-        protected
-        override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public FinalAppDBContext(DbContextOptions<FinalAppDBContext> options) : base(options)
         {
-            optionsBuilder.UseSqlite("Filename=./FinalApp.db");
+            Options = options;
         }
-
-        internal void myListRemove(Todo removeItem)
-        {
-            throw new NotImplementedException();
-        }
+        public DbSet<Todo> Todos { get; set; }
+        public DbContextOptions<FinalAppDBContext> Options { get; }
     }
 
-
 }
+
+
+
