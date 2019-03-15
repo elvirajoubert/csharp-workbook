@@ -33,7 +33,7 @@ namespace FinalApp
 
             while (userInput != "exit")
             {
-                Console.WriteLine("Please enter 'add', 'remove', 'list','update' 'list completed' or 'exit'");
+                Console.WriteLine("Please enter 'add', 'remove', 'list','update', 'list completed','display id' or 'exit'");
                 userInput = Console.ReadLine().ToLower();
                 if (userInput == "add")
                 {
@@ -67,7 +67,7 @@ namespace FinalApp
                     {
                         Console.WriteLine("Enter the id of the task you would like to remove.");
                         id = Console.ReadLine();
-                        Todo removeItem = theTda.GetTodo(id);
+                        Todo removeItem = theTda.Find(id);
                         theTda.remove(removeItem);
                         theTda.save();
 
@@ -87,9 +87,10 @@ namespace FinalApp
                     {
                         Console.WriteLine("Please enter id of the task you wish to mark as complete...");
                         id = Console.ReadLine();
-                        Todo markAsDone = theTda.GetTodo(id);
+                        Todo markAsDone = theTda.Find(id);
                         markAsDone.Status = true;
                         theTda.save();
+                        Console.ReadLine();
                     }
                     else
                     {
@@ -102,6 +103,22 @@ namespace FinalApp
                     {
                         Console.WriteLine(item);
                     }
+                }
+
+
+
+                else if (userInput == "display id")
+                {
+                    foreach (Todo item in theTda.list())
+                    {
+                        Console.WriteLine("Please enter id of the task you wish to display...");
+                        id = Console.ReadLine();
+                        Todo displayTodo = theTda.Find(id);
+                        theTda.save();
+                        //Console.WriteLine(item);
+                        break;
+                    }
+
                 }
                 else if (userInput == "exit")
                 {
@@ -167,18 +184,32 @@ namespace FinalApp
 
             //searching an item by id
 
-            public Todo GetTodo(string findId)
+            public Todo Find(string findId)
             {
-                foreach (Todo item in context.Todos)
-                {
-                    if (item.Id.ToString() == findId)
-                    {
-                        return item;
-                    }
-                }
-                return null;
-            }
 
+                Todo foundToDo = new Todo(-1, "");
+
+
+                {
+                    foreach (Todo item in context.Todos)
+                    {
+                        if (item.Id.ToString() == findId)
+                        {
+                            foundToDo = item;
+                            Console.WriteLine("{0} {1}", foundToDo.Id, foundToDo.Task);
+
+                        }
+                        else
+                        {
+                            foundToDo = null;
+                        }
+
+
+                    }
+                    return foundToDo;
+
+                }
+            }
             public List<Todo> ListCompleted()
             {
                 List<Todo> completedList = new List<Todo>();
@@ -195,6 +226,7 @@ namespace FinalApp
 
             }
 
+
             public void remove(Todo removeItem)
             {
                 context.Todos.Remove(removeItem);
@@ -204,6 +236,8 @@ namespace FinalApp
             {
                 context.SaveChanges();
             }
+
+
         }
     }
 }
