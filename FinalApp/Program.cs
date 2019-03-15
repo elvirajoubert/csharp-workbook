@@ -91,7 +91,10 @@ namespace FinalApp
                         markAsDone.Status = true;
                         theTda.save();
                         Console.ReadLine();
+                        break;
                     }
+
+
                     else
                     {
                         Console.WriteLine("Back to menu...");
@@ -102,6 +105,7 @@ namespace FinalApp
                     foreach (Todo item in theTda.ListCompleted())
                     {
                         Console.WriteLine(item);
+                        break;
                     }
                 }
 
@@ -115,7 +119,7 @@ namespace FinalApp
                         id = Console.ReadLine();
                         Todo displayTodo = theTda.Find(id);
                         theTda.save();
-                        //Console.WriteLine(item);
+
                         break;
                     }
 
