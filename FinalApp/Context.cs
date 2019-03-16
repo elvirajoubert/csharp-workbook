@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using static FinalApp.Program;
 
 namespace FinalApp
 {
@@ -10,8 +9,8 @@ namespace FinalApp
         {
             Options = options;
         }
-        public DbSet<Todo> Todos { get; set; }
-        public DbContextOptions<FinalAppDBContext> Options { get; }
+        public DbSet<Program.Todo> Todos { get; set; }
+        public DbContextOptions<FinalAppDBContext> Options { get; set; }
     }
 
 }
